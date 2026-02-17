@@ -1,8 +1,11 @@
+<chat.css>
+
 @charset "UTF-8";
 
-/* ======================
-   채팅창 컨테이너
-====================== */
+/* =====================
+    채팅창 컨테이너
+   ===================== */
+
 .chat-wrapper {
     position: relative;
     display: flex;
@@ -16,9 +19,11 @@
     border-radius: 12px;
 }
 
-/* ======================
-   z-index 레이어 관리
-====================== */
+/* =====================
+    z-index 레이어 관리
+   ===================== */
+
+/* 배경 레이어 (z-index: 0) */
 .galaxy-bg,
 .chat-wrapper .stars {
     position: absolute;
@@ -31,6 +36,7 @@
     pointer-events: none;
 }
 
+/* 헤더 및 메시지 영역 (z-index: 5) */
 .chat-header {
     position: relative;
     z-index: 5;
@@ -41,6 +47,7 @@
     z-index: 5;
 }
 
+/* 입력 필드 영역 (z-index: 10) */
 .chat-input-area {
     position: relative;
     z-index: 10;
@@ -48,9 +55,10 @@
     background: white;
 }
 
-/* ======================
-   별과 별똥별
-====================== */
+/* =====================
+    별 효과
+   ===================== */
+
 .stars {
     pointer-events: none;
     position: absolute;
@@ -66,6 +74,11 @@
     animation: stars-move 100s infinite linear;
 }
 
+/* =====================
+    유성(별똥별) 효과
+   ===================== */
+
+/* 유성 기본 설정 */
 .shooting-star {
     position: absolute;
     top: -10%;
@@ -81,6 +94,7 @@
     animation: shooting-star-move 3.5s linear infinite;
 }
 
+/* 유성 꼬리 생성 */
 .shooting-star::after {
     content: "";
     position: absolute;
@@ -92,24 +106,32 @@
     transform: translateY(-50%);
 }
 
-/* 개별 별똥별 타이밍 */
-/* 오른쪽 상단이 아닌 곳 (왼쪽 상단) */
+/* ====================================================================================
+    개별 별똥별 타이밍 : right 값이 클수록 화면 왼쪽, top 값이 작거나 마이너스면 화면 상단
+   ==================================================================================== */
 
-/* 화면 중앙부 왼쪽 */
+/* 화면 중앙 상단부 (약간 오른쪽) */
 .shooting-star:nth-child(1) { top: -5%;  right: 35%; animation-delay: 2.2s; }
+
+/* 화면 왼쪽 상단부 (치우친 위치) */
 .shooting-star:nth-child(2) { top: 10%;  right: 70%;  animation-delay: 3.4s;}
+
 /* 화면 왼쪽 및 하단부 출발 (깊게 내려가는 효과) */
 .shooting-star:nth-child(3) { top: 3%;   right: 50%;  animation-delay: 4.6s; }
+
+/* 화면 오른쪽 외곽 (상단 구석) */
 .shooting-star:nth-child(4) { top: -12%;  right: -15%;  animation-delay: 0.8s; }
-.shooting-star:nth-child(5) { top: 6%;  right: 11%;  animation-delay: 5.9s; }
+
+/* 화면 오른쪽 상단부 */
+.shooting-star:nth-child(5) { top: 6%;   right: 11%;  animation-delay: 5.9s; }
+
+/* 화면 왼쪽 끝 지점 (상단부) */
 .shooting-star:nth-child(6) { top: 15%;  right: 85%;  animation-delay: 7.2s; }
 
-/* 추가 1개 */
-/*.shooting-star:nth-child(7) { top: 70%;  right: 50%;  animation-delay: 7s; } */ /* 중앙 하단 */
+/* =====================
+    메시지 표시 영역
+   ===================== */
 
-/* ======================
-   메시지 영역
-====================== */
 .chat-content {
     position: relative;
     flex: 1;
@@ -120,6 +142,11 @@
     z-index: 10;
 }
 
+/* =====================
+    메시지 말풍선 스타일
+   ===================== */
+
+/* 기본 말풍선 (상대방 메시지) */
 .msg {
     background: rgba(255, 255, 255, 0.8);
     color: #333;
@@ -131,6 +158,7 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
+/* 내 메시지 스타일 */
 .msg.me {
     background: #4a90e2;
     color: #fff;
@@ -138,9 +166,10 @@
     align-self: flex-end;
 }
 
-/* ======================
-   입력 필드
-====================== */
+/* =====================
+    입력창 스타일
+   ===================== */
+
 #msg-in {
     flex: 1;
     padding: 12px;
@@ -158,9 +187,10 @@
     font-weight: bold;
 }
 
-/* ======================
-   스크롤바
-====================== */
+/* =====================
+    스크롤바 커스텀
+   ===================== */
+
 .chat-content::-webkit-scrollbar {
     width: 6px;
 }
@@ -170,25 +200,10 @@
     border-radius: 10px;
 }
 
-/* ======================
-   애니메이션
-====================== */
-@keyframes stars-move {
-    from { background-position: 0 0; }
-    to { background-position: 1000px 500px; }
-}
+/* =====================
+    갤럭시 테마 (Theme)
+   ===================== */
 
-@keyframes shooting-star-move {
-    0%   { transform: translate(0,0) rotate(-45deg); opacity: 0; }
-    10%  { opacity: 1; }
-    100% { transform: translate(-900px, 900px) rotate(-45deg); opacity: 0; }
-}
-
-/* ======================
-   갤럭시 테마
-====================== */
-
-/* 배경 */
 body.galaxy-theme .chat-wrapper {
     background: linear-gradient(135deg, #fce4ec 0%, #e3f2fd 100%) !important;
 }
@@ -201,7 +216,6 @@ body.galaxy-theme .chat-message-area {
     background: transparent !important;
 }
 
-/* 말풍선 */
 body.galaxy-theme .message-bubble {
     background: #f3f4f6 !important;
     color: #000000 !important;
@@ -209,17 +223,13 @@ body.galaxy-theme .message-bubble {
     backdrop-filter: none !important;
 }
 
-/* 이 색 괜찮나요? */
 body.galaxy-theme .message-bubble.me {
-    /*background: linear-gradient(135deg, #d8aff8 0%, #d8aff8 100%) !important;*/
     background: linear-gradient(135deg, #b6aff8 0%, #d8aff8 100%) !important;
-    /*color: #424242 !important;*/
     color: #ffffff !important;
     border: 1px solid #cfabf6 !important;
     font-weight: bold !important;
 }
 
-/* 입력창 */
 body.galaxy-theme .chat-input-area {
     background: #ffffff;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -231,13 +241,26 @@ body.galaxy-theme #msg-in {
     border: 1px solid #ddd !important;
 }
 
-/* 스크롤바 */
 body.galaxy-theme .chat-content::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
 }
 
-/* 별/별똥별 숨김 */
 body.galaxy-theme .stars,
 body.galaxy-theme .shooting-star {
     display: none !important;
+}
+
+/* =====================
+    애니메이션 정의
+   ===================== */
+
+@keyframes stars-move {
+    from { background-position: 0 0; }
+    to { background-position: 1000px 500px; }
+}
+
+@keyframes shooting-star-move {
+    0%   { transform: translate(0,0) rotate(-45deg); opacity: 0; }
+    10%  { opacity: 1; }
+    100% { transform: translate(-900px, 900px) rotate(-45deg); opacity: 0; }
 }
