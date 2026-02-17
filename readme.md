@@ -4,7 +4,7 @@
 
 `src/main/resources/db.properties` 파일을 직접 생성해주세요.
 
-아래 내용을 복사해서 본인 DB 정보로 수정하세요.
+아래 내용을 복사해서 본인 DB 정보로 수정해주세요.
 ```properties
 db.driver=oracle.jdbc.driver.OracleDriver
 db.url=jdbc:oracle:thin:@DB주소:1521:xe
