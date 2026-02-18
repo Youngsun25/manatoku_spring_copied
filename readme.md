@@ -1,5 +1,9 @@
 # Manatoku Spring Project
 
+## 배포링크 
+https://manatoku.today
+
+
 ## 실행 전 필수 설정
 
 `src/main/resources/db.properties` 파일을 직접 생성해주세요.
@@ -17,3 +21,4 @@ db.password=DB비밀번호
 1. 레포지토리 clone
 2. `db.properties` 파일 생성 후 DB 정보 입력
 3. 서버 실행
+
